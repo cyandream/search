@@ -1,31 +1,46 @@
+// Gulp Packages
 var gulp = require('gulp');
-var del = require('del');
-var browserify = require('gulp-browserify');
-var concat = require('gulp-concat');
-var runSequence = require('run-sequence');
-var nodemon = require('gulp-nodemon');
+var gutil = require('gulp-util');
+var sass = require('gulp-sass');
+var watch = require('gulp-watch');
+//var sourcemaps = require('gulp-sourcemaps');
 
-gulp.task('clean', function(cb) {
-  del(['build/*'], cb);
+// default task and log a message
+gulp.task('default', function(){
+  return gutil.log('Gulp is running')
 });
 
-gulp.task('copy', function() {
-  return gulp.src('client/www/index.html')
-    .pipe(gulp.dest('build'));
+
+gulp.task('buildCSS', function () {
+  return gulp.src('./components/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./components/dist'));
 });
 
-gulp.task('browserify', function() {
-  return gulp.src('client/index.js')
-    .pipe(browserify({transform: 'reactify'}))
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('build'));
+gulp.task('watch', function () {
+  gulp.watch('./components/scss/**/*.scss', ['buildCSS']);
 });
 
-gulp.task('build', function(cb) {
-  runSequence('clean', 'browserify', 'copy', cb);
-});
+// gulp.task('clean', function(cb) {
+//   del(['build/*'], cb);
+// });
 
-gulp.task('default', ['build'], function() {
-  gulp.watch('client/*/*', ['build']);
-  nodemon({ script: 'index.js', ignore: ['gulpfile.js', 'build', 'client', 'dist'] });
+// gulp.task('copy', function() {
+//   return gulp.src('client/www/index.html')
+//     .pipe(gulp.dest('build'));
+// });
+
+// gulp.task('browserify', function() {
+//   return gulp.src('client/index.js')
+//     .pipe(browserify({transform: 'reactify'}))
+//     .pipe(concat('app.js'))
+//     .pipe(gulp.dest('build'));
+// });
+
+// gulp.task('build', function(cb) {
+//   runSequence('buildCSS');
+// });
+
+gulp.task('default', ['watch'], function() {
+    return gutil.log('Watch is running')
 });
