@@ -1,101 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Movie Search</title>
-
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/band-x-media/SASS-Material-Design-for-Bootstrap/master/dist/material-bootstrap.min.css" rel="stylesheet">
-
-
     <link rel="stylesheet" href="components/dist/styles.css">
     <script src="components/apps/apps.js"></script>
-
-
 </head>
+
 <body>
-<body>
-  <header id="header">
 
-<div id="wrapper" class="blue">
-  <nav class="navbar navbar-fixed-top blue">
-
-    <div class="container">
-
-
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><i class="fa fa-film"></i>Movie Search</a>
-      </div>
-
-
-      </div>
-    </nav>
-    </div>
-  </header>
-
-<div id="window">
-  <div class="container">
-    <div id="dialogue" class="paper elevated-2">
-      <div id="headerImg"></div>
-<!--     <img src="http://goodyfeed.goodybookspteltd1.netdna-cdn.com/wp-content/uploads/2015/12/movie-660x330.jpg"> -->
-      <h1>MOVIE TIME SEARCH</h1>
-      <p> Search the movie database for your favorite flicks!</p>
-
-      <form action="" id="searchTerm" method="post">
-        <div class="form-group label-floating is-empty">
-          <input type="text" class="form-control" id="query">
-          <span class="help-block">Search for Favorite Movie</span>
-          <span class="material-input"></span>
+    <body>
+        <header id="header">
+            <div id="wrapper" class="blue">
+                <nav class="navbar navbar-fixed-top blue">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><i class="fa fa-film"></i>Movie Search</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div id="window">
+            <div class="container">
+                <div id="dialogue" class="paper elevated-2">
+                    <div id="headerImg"></div>
+                    <h1>MOVIE TIME SEARCH</h1>
+                    <p> Search the movie database for your favorite flicks!</p>
+                    <form action="" id="searchTerm" method="post">
+                        <div class="form-group label-floating is-empty">
+                            <input type="text" class="form-control" id="query">
+                            <span class="help-block">Search for Favorite Movie</span>
+                            <span class="material-input"></span>
+                        </div>
+                        <button type="submit" value="go" class="btn btn-fab btn-md bg-green pull-right"><i class="fa fa-plus"></i></button>
+                    </form>
+                    <p id="error" class="danger">Error: Please try again!</p>
+                </div>
+                <div id="movies" class="paper elevated-2">
+                    <a class="navbar-brand pull-right" href="#" id="close"><i class="fa fa-times"></i>close</a>
+                    <h2>Selected Movies</h2>
+                    <div class="row">
+                        <div id="search-results">movie list</div>
+                    </div>
+                </div>
+            </div>
         </div>
-          <button type="submit" value="go" class="btn btn-fab btn-md bg-green pull-right"><i class="fa fa-plus"></i></button>
-      </form>
-      <p class="error"></p>
-
-    </div>
-
-
-    <div id="movies" class="paper elevated-2">
-     <a class="navbar-brand pull-right" href="#" id="close"><i class="fa fa-times"></i>close</a>
-    <h2>Selected Movies</h2>
-
-      <div class="row">
-        <div id="search-results">
-         movie list
         </div>
-      </div>
+        <footer id="footer" class="navbar navbar-fixed-bottom blue">
+            <div class="container">
+                <p class="navbar-text pull-left">&#169; 2016 Copyright Michelle Burton</p>
+                <a class="navbar-btn btn btn-primary pull-right" href="https://www.linkedin.com/in/msmichelleburton">View LinkedIn</a>
+            </div>
+        </footer>
+        <script>
+        _MOVIES.init();
+        </script>
+        </div>
+    </body>
 
-    </div>
-
-    </div>
-
-
-  </div>
-</div>
-<footer id="footer" class="navbar navbar-fixed-bottom blue">
-<div class="container">
-  <p class="navbar-text pull-left">&#169; 2016 Copyright Michelle Burton</p>
-  <a class="navbar-btn btn btn-primary pull-right" href="https://www.linkedin.com/in/msmichelleburton">View LinkedIn</a>
-</div>
-</footer>
-
-<script>
-_MOVIES.init();
-</script>
-
-</div>
-</body>
 </html>
