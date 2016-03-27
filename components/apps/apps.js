@@ -39,7 +39,7 @@ var _MOVIES = (function(){
 
   showMovie: function (results){
         // limit results
-        var size = 7;
+        var size = 6;
 
         // Trim results down
         while (results.length > size){
@@ -47,17 +47,15 @@ var _MOVIES = (function(){
           console.log("length:  " + results.length)
         }
 
-        // Sort
-          console.log(results)
-
+        // Sort Alphabetical
           results.sort(function(a, b){
             var titleA = a.Title.toUpperCase();
             var titleB = b.Title.toUpperCase();
             return (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0;
           });
-          console.log(results)
 
-      // Build html to return
+
+      // Build cards to return
       var html = "";
 
       $.each(results, function(index, value) {
@@ -65,9 +63,13 @@ var _MOVIES = (function(){
           var url = "http://img.omdbapi.com/?i="
           var poster = value.Poster;
           var imgSrc = url + imdbID + '&apikey=57d13b99';
-          html += '<div class="col-sm-12 col-md-3"><div class="box"><span>' + value.Title + '</span>';
-          html += '<img src=' + imgSrc + '></div></div>';
+          html += '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"><div class="card paper"> ';
+          html += '<div class="tile background-image tile-lg background-top top" ';
+          html += 'style="background-image: url(' + imgSrc + ');">';
+          html += '<span>' + value.Title + '</span>';
+          html += '</div></div></div>';
       });
+
 
       // return html
       $('#search-results').html(html);
