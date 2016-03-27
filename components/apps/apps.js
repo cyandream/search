@@ -9,22 +9,28 @@ var _MOVIES = (function(){
 
            // Search for Term
             var searchTerm = $('#query').val();
-                  $.getJSON('http://www.omdbapi.com/?apikey=57d13b99&s=' + searchTerm + '&r=json', function(data) {
+              $.ajax({
+                url: 'http://www.omdbapi.com/?apikey=57d13b99&s=' + searchTerm + '&r=json',
+                dataType: 'json',
+                success: function (data){
+                  var data = data.Search;
 
-                  })
-                   .done(function(data) {
-                     _MOVIES.showMovie(data.Search);
-                      // Hide first dialogue box
-                      $("#movies").addClass("slideup").delay(500);
-                      $("#dialogue").addClass("slideup");
-                  })
-                  .fail(function() {
-                   // console.log( "error" );
-                  })
-                  .always(function() {
-                   // console.log( "complete" );
-                  });
+                  // Check if search returned movies
+                  if(data.length > 0 ){
 
+                    // call display
+                    _MOVIES.showMovie(data);
+
+                    // Hide first dialogue box
+                    $("#movies").addClass("slideup").delay(500);
+                    $("#dialogue").addClass("slideup");
+                  }
+
+                },
+                error: function(data){
+                  //console.log("ERROR:  " + dataType)
+                }
+              });
 
           });
         },
@@ -32,7 +38,24 @@ var _MOVIES = (function(){
 
 
   showMovie: function (results){
-      //console.log(results);
+        // limit results
+        var size = 7;
+
+        // Trim results down
+        while (results.length > size){
+          var popped = results.pop();
+          console.log("length:  " + results.length)
+        }
+
+        // Sort
+          console.log(results)
+
+          results.sort(function(a, b){
+            var titleA = a.Title.toUpperCase();
+            var titleB = b.Title.toUpperCase();
+            return (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0;
+          });
+          console.log(results)
 
       // Build html to return
       var html = "";
